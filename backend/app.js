@@ -20,8 +20,17 @@ mongoose
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 
 app.post('/notice', (req, res) => {
+  console.log(req.body);
   const notice = new Notice(req.body);
   notice.save();
   // console.log(req.body);
   res.status(201).send(notice);
+});
+
+app.get('/notice', async (req, res) => {
+  // User.find({});
+  // const result = await Notice.find().exists('numId', req.body.numId);
+  const result = await Notice.findOne({ numId: req.body.numId });
+  if (!result) res.status(201).send('not exists');
+  else res.status(201).send('exists');
 });
