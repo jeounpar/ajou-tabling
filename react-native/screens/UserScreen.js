@@ -1,11 +1,23 @@
 import { FlatList, Image, View, StyleSheet } from 'react-native';
-
 import { CATEGORIES } from '../data/CategoryData';
 import GridTile from '../components/GridTile';
+import { useNavigation } from '@react-navigation/native';
 
-function CategoriesScreen({ navigation }) {
+function UserScreen() {
+  const navigation = useNavigation();
+  function pressHandler(id) {
+    if (id === 'a3') {
+      navigation.navigate('NoticeScreen');
+    }
+  }
   function renderCategoryItem(itemData) {
-    return <GridTile title={itemData.item.title} icon={itemData.item.icon} />;
+    return (
+      <GridTile
+        title={itemData.item.title}
+        icon={itemData.item.icon}
+        onPress={() => pressHandler(itemData.item.id)}
+      />
+    );
   }
   return (
     <>
@@ -25,7 +37,7 @@ function CategoriesScreen({ navigation }) {
   );
 }
 
-export default CategoriesScreen;
+export default UserScreen;
 
 const styles = StyleSheet.create({
   image: {

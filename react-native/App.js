@@ -1,9 +1,14 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Main from './components/Main';
-import CategoriesScreen from './screens/CategoriesScreen';
+import UserScreen from './screens/UserScreen';
+import { useState } from 'react';
+import AuthScreen from './screens/AuthScreen';
+import LoginScreen from './screens/LoginScreen';
+import LoginContextProvider from './store/login';
+import AdminScreen from './screens/AdminScreen';
+import NoticeScreen from './screens/NoticeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,11 +16,17 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Main">
-          <Stack.Screen name="Main" component={CategoriesScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <LoginContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="AuthScreen" component={AuthScreen} />
+            <Stack.Screen name="UserScreen" component={UserScreen} />
+            <Stack.Screen name="AdminScreen" component={AdminScreen} />
+            <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </LoginContextProvider>
     </>
   );
 }
@@ -23,7 +34,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#E3F4F4',
     alignItems: 'center',
     justifyContent: 'center',
   },
