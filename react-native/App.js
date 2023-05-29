@@ -3,12 +3,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import UserScreen from './screens/UserScreen';
-import { useState } from 'react';
 import AuthScreen from './screens/AuthScreen';
 import LoginScreen from './screens/LoginScreen';
 import LoginContextProvider from './store/login';
 import AdminScreen from './screens/AdminScreen';
 import NoticeScreen from './screens/NoticeScreen';
+import ManualScreen from './screens/ManualScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +24,7 @@ export default function App() {
             <Stack.Screen name="UserScreen" component={UserScreen} />
             <Stack.Screen name="AdminScreen" component={AdminScreen} />
             <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
+            <Stack.Screen name="ManualScreen" component={ManualScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </LoginContextProvider>

@@ -58,7 +58,7 @@ function NoticeScreen() {
   }
   return (
     <>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={[{ flexDirection: 'row' }, styles.container]}>
         <TextInput
           style={styles.input}
           onChangeText={searchInputHandler}
@@ -93,14 +93,12 @@ export default NoticeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#E3F4F4',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   listOuterContainer: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: '#E3F4F4',
   },
   listContainer: {
     flex: 1,
@@ -117,9 +115,10 @@ const styles = StyleSheet.create({
   item: {
     margin: 6,
     borderRadius: 8,
-    backgroundColor: '#E3F4F4',
-    fontSize: 18,
+    backgroundColor: '#27BEF5',
+    fontSize: 20,
     fontWeight: 'bold',
+    color: 'black',
     overflow: 'hidden',
   },
   input: {

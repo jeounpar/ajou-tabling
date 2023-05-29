@@ -8,6 +8,8 @@ function UserScreen() {
   function pressHandler(id) {
     if (id === 'a3') {
       navigation.navigate('NoticeScreen');
+    } else if (id === 'a4') {
+      navigation.navigate('ManualScreen');
     }
   }
   function renderCategoryItem(itemData) {
@@ -21,18 +23,20 @@ function UserScreen() {
   }
   return (
     <>
-      <View>
-        <Image
-          source={require('../assets/images/ajou-main.jpg')}
-          style={styles.image}
+      <View style={styles.container}>
+        <View>
+          <Image
+            source={require('../assets/images/ajou-main.jpg')}
+            style={styles.image}
+          />
+        </View>
+        <FlatList
+          data={CATEGORIES}
+          keyExtractor={item => item.id}
+          renderItem={renderCategoryItem}
+          numColumns={2}
         />
       </View>
-      <FlatList
-        data={CATEGORIES}
-        keyExtractor={item => item.id}
-        renderItem={renderCategoryItem}
-        numColumns={2}
-      />
     </>
   );
 }
@@ -43,5 +47,8 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 250,
+  },
+  container: {
+    backgroundColor: '#E3F4F4',
   },
 });
