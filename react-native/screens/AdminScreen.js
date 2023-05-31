@@ -1,10 +1,25 @@
-import { FlatList, Image, View, StyleSheet } from 'react-native';
-import { CATEGORIES } from '../data/CategoryData';
+import { FlatList, Image, View, StyleSheet, Button } from 'react-native';
 import GridTile from '../components/GridTile';
+import { AdminCategories } from '../data/AdminScreenData';
+import { useNavigation } from '@react-navigation/native';
 
 function AdminScreen() {
+  const navigation = useNavigation();
+  function pressHandler(id) {
+    if (id === 'a1') {
+      navigation.navigate('ReservationAdmin');
+    } else if (id === 'a2') {
+      navigation.navigate('AdminNotice');
+    }
+  }
   function renderCategoryItem(itemData) {
-    return <GridTile title={itemData.item.title} icon={itemData.item.icon} />;
+    return (
+      <GridTile
+        title={itemData.item.title}
+        icon={itemData.item.icon}
+        onPress={() => pressHandler(itemData.item.id)}
+      />
+    );
   }
   return (
     <>
@@ -15,7 +30,7 @@ function AdminScreen() {
         />
       </View>
       <FlatList
-        data={CATEGORIES}
+        data={AdminCategories}
         keyExtractor={item => item.id}
         renderItem={renderCategoryItem}
         numColumns={2}

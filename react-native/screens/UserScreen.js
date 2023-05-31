@@ -1,12 +1,16 @@
 import { FlatList, Image, View, StyleSheet } from 'react-native';
-import { CATEGORIES } from '../data/CategoryData';
+import { CATEGORIES } from '../data/UserScreenData';
 import GridTile from '../components/GridTile';
 import { useNavigation } from '@react-navigation/native';
 
 function UserScreen() {
   const navigation = useNavigation();
   function pressHandler(id) {
-    if (id === 'a3') {
+    if (id === 'a1') {
+      navigation.navigate('MyReservation');
+    } else if (id === 'a2') {
+      navigation.navigate('RoomScreen');
+    } else if (id === 'a3') {
       navigation.navigate('NoticeScreen');
     } else if (id === 'a4') {
       navigation.navigate('ManualScreen');

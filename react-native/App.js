@@ -9,6 +9,11 @@ import LoginContextProvider from './store/login';
 import AdminScreen from './screens/AdminScreen';
 import NoticeScreen from './screens/NoticeScreen';
 import ManualScreen from './screens/ManualScreen';
+import ReservationScreen from './screens/ReservationScreen';
+import RoomScreen from './screens/RoomScreen';
+import MyReservation from './screens/MyReservation';
+import ReservationAdmin from './screens/AdminReservation';
+import AdminNotice from './screens/AdminNotice';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,18 +30,20 @@ export default function App() {
             <Stack.Screen name="AdminScreen" component={AdminScreen} />
             <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
             <Stack.Screen name="ManualScreen" component={ManualScreen} />
+            <Stack.Screen
+              name="ReservationScreen"
+              component={ReservationScreen}
+            />
+            <Stack.Screen name="RoomScreen" component={RoomScreen} />
+            <Stack.Screen name="MyReservation" component={MyReservation} />
+            <Stack.Screen
+              name="ReservationAdmin"
+              component={ReservationAdmin}
+            />
+            <Stack.Screen name="AdminNotice" component={AdminNotice} />
           </Stack.Navigator>
         </NavigationContainer>
       </LoginContextProvider>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#E3F4F4',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
