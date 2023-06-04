@@ -22,6 +22,11 @@ app.listen(PORT, () => console.log(`Backend-Server listening on port ${PORT}`));
 
 app.get('/notice', async (req, res) => {
   const result = await Notice.find({}, { _id: 0, __v: 0 });
+  result.sort(function (a, b) {
+    {
+      return b.numId - a.numId;
+    }
+  });
   res.status(200).send(result);
 });
 
